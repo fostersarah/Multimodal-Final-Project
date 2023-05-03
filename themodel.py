@@ -1,10 +1,8 @@
 import numpy
 import pandas as pd
-from sklearn import svm
-from sklearn import datasets
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 AU1file = "VideoFeatures/AU1.csv"
 AU2file = "VideoFeatures/AU2.csv"
@@ -30,10 +28,17 @@ FeatureSet3 = pd.merge(physData, Landmarks, how = "left", on = "Index")
 
 RPE= pd.read_csv("Aw-Soma Data.csv")
 RPE = RPE['RPE'][:76] 
-
-
-
-XData= []
-
-
 YData = RPE
+
+#randomly splitting the data
+trainX, testX, trainY, testY = train_test_split(FeatureSet1, YData, test_size=0.3)
+
+randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
+
+randomForest.fit(trainX, trainY)
+
+predictionF1 = randomForest.predict(testX)
+
+rfF1Accuracy =accuracy_score(testY, predictionF1)
+
+print(rfF1Accuracy)
