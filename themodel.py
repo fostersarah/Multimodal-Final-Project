@@ -26,6 +26,10 @@ FeatureSet1 = pd.merge(physData, AU1, how = "left", on = "Index")
 FeatureSet2 = pd.merge(physData, AU2, how = "left", on = "Index")
 FeatureSet3 = pd.merge(physData, Landmarks, how = "left", on = "Index")
 
+FeatureSet1 = FeatureSet1.drop('Index', axis=1)
+FeatureSet2 = FeatureSet2.drop('Index', axis=1)
+FeatureSet3 = FeatureSet3.drop('Index', axis=1)
+
 RPE= pd.read_csv("Aw-Soma Data.csv")
 RPE = RPE['RPE'][:76] 
 YData = RPE
