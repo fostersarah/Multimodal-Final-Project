@@ -1,0 +1,1 @@
+FOR /R D:\MM_Videos\Dataset\ %%G IN (*.mp4, *.mov, *.MOV) DO FeatureExtraction.exe -f "%%G" 
