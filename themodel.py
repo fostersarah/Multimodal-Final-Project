@@ -30,7 +30,7 @@ RPE= pd.read_csv("Aw-Soma Data.csv")
 RPE = RPE['RPE'][:76] 
 YData = RPE
 
-#randomly splitting the data
+#randomly splitting the data for feature 1 and testing
 trainX, testX, trainY, testY = train_test_split(FeatureSet1, YData, test_size=0.3)
 
 randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
@@ -41,4 +41,48 @@ predictionF1 = randomForest.predict(testX)
 
 rfF1Accuracy =accuracy_score(testY, predictionF1)
 
-print(rfF1Accuracy)
+
+print("Accuracy score for AU1 and heart rate as x: " + str(rfF1Accuracy))
+
+
+#featureset2 as the x here
+trainX, testX, trainY, testY = train_test_split(FeatureSet2, YData, test_size=0.3)
+
+randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
+
+randomForest.fit(trainX, trainY)
+
+predictionF2 = randomForest.predict(testX)
+
+rfF2Accuracy =accuracy_score(testY, predictionF2)
+
+print("Accuracy score for AU2 and heart rate as x: " + str(rfF2Accuracy))
+
+#featureset3 as the x here
+trainX, testX, trainY, testY = train_test_split(FeatureSet3, YData, test_size=0.3)
+
+randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
+
+randomForest.fit(trainX, trainY)
+
+predictionF3 = randomForest.predict(testX)
+
+rfF3Accuracy =accuracy_score(testY, predictionF3)
+
+print("Accuracy score for landmarks and heart rate as x: " + str(rfF3Accuracy))
+
+
+#only heart rate as the x here
+trainX, testX, trainY, testY = train_test_split(physData, YData, test_size=0.3)
+
+randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
+
+randomForest.fit(trainX, trainY)
+
+predictionHR = randomForest.predict(testX)
+
+rfHRAccuracy =accuracy_score(testY, predictionHR)
+
+print("Accuracy score for just heart rate as x: " + str(rfHRAccuracy))
+
+
