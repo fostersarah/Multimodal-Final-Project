@@ -39,7 +39,6 @@ RPE = RPE.replace([5,6,7], 7)
 RPE = RPE.replace([8,9,10], 10)
 
 YData = RPE
-
 #randomly splitting the data for feature 1 and testing
 trainX, testX, trainY, testY = train_test_split(FeatureSet1, YData, test_size=0.3)
 
@@ -48,7 +47,6 @@ randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
 randomForest.fit(trainX, trainY)
 
 predictionF1 = randomForest.predict(testX)
-
 rfF1Accuracy =accuracy_score(testY, predictionF1)
 
 
@@ -76,7 +74,6 @@ randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
 randomForest.fit(trainX, trainY)
 
 predictionF3 = randomForest.predict(testX)
-
 rfF3Accuracy =accuracy_score(testY, predictionF3)
 
 print("Accuracy score for landmarks and heart rate as x: " + str(rfF3Accuracy))
