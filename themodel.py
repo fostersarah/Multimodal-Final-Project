@@ -34,6 +34,10 @@ FeatureSet3 = FeatureSet3.drop('Index', axis=1)
 
 RPE= pd.read_csv("Aw-Soma Data.csv")
 RPE = RPE['RPE'][:76] 
+RPE.replace([1,2,3,4], 4)
+RPE.replace([5,6,7], 7)
+RPE.replace([8,9,10], 10)
+
 YData = RPE
 
 #randomly splitting the data for feature 1 and testing
