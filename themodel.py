@@ -34,12 +34,14 @@ FeatureSet3 = FeatureSet3.drop('Index', axis=1)
 
 RPE= pd.read_csv("Aw-Soma Data.csv")
 RPE = RPE['RPE'][:76] 
-RPE.replace([1,2,3,4], 4)
-RPE.replace([5,6,7], 7)
-RPE.replace([8,9,10], 10)
-
+#RPE.replace(1,4)
+#RPE.replace(2,4)
+#RPE.replace(3,4)
+#RPE.replace(5,7)
+#RPE.replace(6,7)
+#RPE.replace(8,10)
+#RPE.replace(9,10)
 YData = RPE
-
 #randomly splitting the data for feature 1 and testing
 trainX, testX, trainY, testY = train_test_split(FeatureSet1, YData, test_size=0.3)
 
@@ -48,7 +50,6 @@ randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
 randomForest.fit(trainX, trainY)
 
 predictionF1 = randomForest.predict(testX)
-
 rfF1Accuracy =accuracy_score(testY, predictionF1)
 
 
@@ -76,7 +77,6 @@ randomForest = RandomForestClassifier(n_estimators=40, max_features="sqrt")
 randomForest.fit(trainX, trainY)
 
 predictionF3 = randomForest.predict(testX)
-
 rfF3Accuracy =accuracy_score(testY, predictionF3)
 
 print("Accuracy score for landmarks and heart rate as x: " + str(rfF3Accuracy))
